@@ -1,0 +1,155 @@
+<div class="content">
+    <!-- image car -->
+    <div>
+        <img src="/assets/images/car1.jpg" class="carsImage">
+    </div>
+    <!-- image cars2 -->
+    <!-- <div>
+        <img src="/assets/images/cars2.png" class="carsImage">
+    </div> -->
+    <!-- text -->
+    <div class="text">
+        <h1>CAR DEALERSHIP FOR BUYING AND SELLING</h1>
+        <h3>FILL IN THE following DETAILS</h3>
+        <h2>AND YOUR DREAM CAR ON THE WAY ...</h2>
+    </div>
+
+    <!-- steper -->
+    <div class="stepper">
+        <mat-card>
+            <mat-stepper orientation="vertical">
+                <mat-step>
+                    <ng-template matStepLabel>Person details</ng-template>
+                    <ng-template matStepContent>
+                        <p class="fullName">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Full Name</mat-label>
+                                <input matInput [formControl]="fullName">
+                                <mat-error *ngIf="fullName.invalid">
+                                    <app-error-message [feild]="fullName"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="gender">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Gender</mat-label>
+                                <mat-select [formControl]="gender">
+                                    <mat-option value="male">male</mat-option>
+                                    <mat-option value="Female">Female</mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="gender.invalid">
+                                    <app-error-message [feild]="gender"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="email">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Email</mat-label>
+                                <input matInput placeholder="Email@example.com" [formControl]="email" required>
+                                <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="dateOfBirth">
+                            <mat-form-field appearance="legacy" class="last-child">
+                                <mat-label>Date of birth</mat-label>
+                                <input matInput [matDatepicker]="picker" [formControl]="dateOfBirth">
+                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="dateOfBirth.invalid">
+                                    <app-error-message [feild]="dateOfBirth"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="hobbies">
+                            <mat-form-field class="example-chip-list" appearance="legacy">
+                                <mat-label>hobbies</mat-label>
+                                <mat-chip-list #chipList aria-label="hobby selection">
+                                    <mat-chip *ngFor="let hobby of hobbies" (removed)="remove(hobby)">
+                                        {{hobby.name}}
+                                        <button matChipRemove>
+                                            <mat-icon>cancel</mat-icon>
+                                        </button>
+                                    </mat-chip>
+                                    <input [formControl]="listHobbies" placeholder="New hobby..."
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
+                                </mat-chip-list>
+                                <mat-error *ngIf="listHobbies.invalid">
+                                    <app-error-message [feild]="listHobbies"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p> <button mat-button matStepperNext>Next</button>
+                    </ng-template>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Location details</ng-template>
+                    <ng-template matStepContent>
+                        <p class="Address">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Address</mat-label>
+                                <input matInput [formControl]="address">
+                                <mat-error *ngIf="address.invalid">
+                                    <app-error-message [feild]="address"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="City">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>City</mat-label>
+                                <input matInput [formControl]="city">
+                                <mat-error *ngIf="city.invalid">
+                                    <app-error-message [feild]="city"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p>
+                        <p class="Country">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Country</mat-label>
+                                <input matInput [formControl]="country">
+                                <mat-error *ngIf="country.invalid">
+                                    <app-error-message [feild]="country"></app-error-message>
+                                </mat-error>
+                            </mat-form-field>
+                        </p> <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button matStepperNext>Next</button>
+                    </ng-template>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Car details</ng-template>
+                    <p class="AmountSeats">
+                        <mat-form-field appearance="legacy">
+                            <mat-label>Amount of seats</mat-label>
+                            <input matInput type="number" [formControl]="amountSeats" min="2" max="7">
+                            <mat-error *ngIf="amountSeats.invalid">{{ getAmountSeatsErrorMessage()}}</mat-error>
+                        </mat-form-field>
+                    </p>
+                    <p class="motorType">
+                        <mat-form-field appearance="legacy" class="last-child">
+                            <mat-label>Motor type</mat-label>
+                            <mat-select [formControl]="motorType">
+                                <mat-option value="Electric">Electric</mat-option>
+                                <mat-option value="Fuel">Fuel</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="motorType.invalid">
+                                <app-error-message [feild]="motorType"></app-error-message>
+                            </mat-error>
+                        </mat-form-field>
+                    </p>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <p>
+                        <button class="saveButton" [disabled]="!hobbies.length||this.fullName.hasError('required')||
+                        this.email.hasError('required') || this.email.hasError('email') || this.fullName.hasError('required') ||
+      this.gender.hasError('required') || this.dateOfBirth.hasError('required') ||
+      this.address.hasError('required') || this.city.hasError('required') ||
+      this.country.hasError('required') || this.listHobbies.hasError('required')
+      || this.amountSeats.hasError('required') || this.amountSeats.hasError('max') || this.amountSeats.hasError('min') ||
+      this.motorType.hasError('required')" mat-raised-button (click)="save()">Save Details</button>
+                    </p>
+                </mat-step>
+            </mat-stepper>
+        </mat-card>
+    </div>
+</div>

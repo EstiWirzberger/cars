@@ -1,0 +1,26 @@
+<!-- <div style="display: block; width: 50%;">
+  <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend">
+  </canvas>
+</div> -->
+<!-- amount seats chart -->
+<div class="charts">
+  <div >
+    <canvas baseChart [datasets]="barAmountSeatsChartData" [labels]="barChartLabelsAmountSeatsType">
+    </canvas>
+  </div>
+  <!-- motor chart -->
+  <div >
+    <canvas baseChart [datasets]="barMotorChartData" [labels]="barChartLabelsMotorType">
+    </canvas>
+  </div>
+  <!-- hobbies charts -->
+  <div >
+    <canvas baseChart [datasets]="barHobbiesChartData" [labels]="barChartLabelsHobbiesType">
+    </canvas>
+  </div>
+</div>

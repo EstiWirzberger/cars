@@ -1,0 +1,38 @@
+<!-- header -->
+<div class="toolbar" role="banner">
+    <div class="header-container">
+        <a (click)="page='LandingPage'" class="header-item" target="_blank" rel="noopener">
+            <img src="/assets/images/logo.jpg" alt="Logo-Clear" width="120px">
+        </a>
+        <a (click)="page='LandingPage'" class="header-item" target="_blank" rel="noopener">
+            <span>Landing Page</span>
+        </a>
+        <a (click)="page='dashboard'" class="header-item" target="_blank" rel="noopener">
+            <span>dashboard</span>
+        </a>
+    </div>
+</div>
+
+<!-- content-->
+<div class="content" role="main">
+
+    <div *ngIf="page=='LandingPage'">
+        <app-buyer-details></app-buyer-details>
+    </div>
+    <div *ngIf="page=='dashboard'">
+        <app-charts></app-charts>
+        <app-table></app-table>
+    </div>
+</div>
+<!-- bottom -->
+<div class="bottomNav">
+    <div class="logo-bottomNav">
+        <a (click)="page='LandingPage'" target="_blank" rel="noopener">
+            <img src="/assets/images/logo.jpg" alt="Logo-Clear" width="120px">
+        </a>
+    </div>
+        <p class="CALL">
+            <span class="bottomNav-item">call- 053-318-21-71</span>
+        </p>
+</div> 
+<router-outlet></router-outlet>
